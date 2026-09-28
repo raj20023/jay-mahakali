@@ -19,4 +19,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://jaymahakisciencecity.com/sitemap.xml
+Sitemap: https://jaymahakalisciencecity.com/sitemap.xml
