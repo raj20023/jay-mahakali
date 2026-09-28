@@ -356,29 +356,29 @@ const BLOG_POSTS = [
     `
   },
   {
-    id: "how-to-customize-spice-levels-like-a-pro",
-    title: "Mild, Medium, or Fire: How to Customize Your Mahakali Sev Usal Like a Pro",
-    slug: "how-to-customize-spice-levels-like-a-pro",
+    id: "how-to-customize-sev-usal-like-a-pro",
+    title: "Classic, Butter, or Cheese: How to Customize Your Mahakali Sev Usal Like a Pro",
+    slug: "how-to-customize-sev-usal-like-a-pro",
     category: "Culinary Secrets",
     categoryClass: "secrets",
     date: "August 28, 2026",
     readTime: "3 min read",
     author: "Counter Special Tips",
     image: "assets/butter_cheese_usal.jpg",
-    excerpt: "Did you know you can customize your Tari pour? Here is how to order your plate at Jay Mahakali to match your exact heat tolerance.",
-    metaTitle: "How to Order Spice Levels at Jay Mahakali Sev Usal",
-    metaDesc: "Learn how to order your ideal spice level at Jay Mahakali Sev Usal Science City. Mild, Classic Medium, or Mahakali Teekha Fire options.",
+    excerpt: "We brew one legendary cauldron of Tari. Here is how you can customize your bowl with melting Amul Butter or Cheese to match your exact taste.",
+    metaTitle: "How to Customize Your Sev Usal | Jay Mahakali Science City",
+    metaDesc: "Discover how to customize your Sev Usal at Jay Mahakali Science City with Classic Tari, Amul Butter for velvety mild richness, or mountain of cheese.",
     content: `
-      <h2>Your Bowl, Your Rules</h2>
-      <p>No two street food lovers have the exact same spice tolerance. That is why Jay Mahakali offers complete control over your plate.</p>
+      <h2>One Master Recipe, Infinite Satisfaction</h2>
+      <p>At Jay Mahakali Sev Usal, we take immense pride in brewing our signature Tari in one authentic, slow-cooked cauldron every single morning. While the base recipe remains untouched, guests can customize their bowl to match their heat and richness preference:</p>
 
-      <h2>The 3 Tiers of Mahakali Heat:</h2>
+      <h2>The 3 Ways to Order at Our Counter:</h2>
       <ul>
-        <li><strong>Level 1 — Mild & Aromatic:</strong> We ladle mostly the seasoned pea broth with just a delicate splash of Tari. Perfect for children or anyone sensitive to chili.</li>
-        <li><strong>Level 2 — Classic Medium:</strong> The authentic balanced pour where the crimson Tari covers the vatana, providing a satisfying spice kick that makes you smile.</li>
-        <li><strong>Level 3 — Mahakali Teekha Fire (🔥):</strong> Pure concentrated Tari ladled from the top of the simmering cauldron where the chili oils gather. Only for genuine spice daredevils!</li>
+        <li><strong>1. The Classic Authentic Usal (અસલી તીખી તરી):</strong> The unadulterated street classic! Generous spoonfuls of boiling crimson Tari over tender green vatana, crunchy Ratlami sev, and fresh spring onions. Best for those who crave the real spicy kick.</li>
+        <li><strong>2. Mellowed with Amul Butter (અમૂલ બટર ઉસળ):</strong> A thick slab of pure golden Amul butter that gently melts into the broth. The butter coats the palate, taking the edge off the chili heat while introducing an irresistible, velvety richness.</li>
+        <li><strong>3. Creamy & Mild with Amul Cheese (ચીઝ ઉસળ):</strong> Blanketed in freshly grated processed Amul cheese. The melted cheese softens the heat significantly, making it the supreme choice for children, families, and cheese lovers.</li>
       </ul>
-      <p>Just let our counter team know your preference when ordering!</p>
+      <p>Simply let our counter team know whether you prefer Classic, Butter, or Cheese when you place your order!</p>
     `
   }
 ];

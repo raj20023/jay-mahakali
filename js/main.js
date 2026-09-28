@@ -51,30 +51,45 @@ function initStoreStatus() {
   setInterval(updateStatus, 60000);
 }
 
-/* 2. Interactive Spice Level Meter */
+/* 2. Interactive Usal Styles (3 Ways to Enjoy Your Usal) */
 function initSpiceMeter() {
   const spiceTabs = document.querySelectorAll('.spice-tab-btn');
   const spiceTitle = document.getElementById('spiceDisplayTitle');
   const spiceDesc = document.getElementById('spiceDisplayDesc');
   const spiceBadge = document.getElementById('spiceDisplayBadge');
+  const spiceBtn = document.getElementById('spiceDisplayBtn');
+  const spiceIcon = document.getElementById('spiceDisplayIcon');
+  const spiceSub = document.getElementById('spiceDisplaySub');
 
   if (!spiceTabs.length || !spiceTitle) return;
 
-  const spiceData = {
-    mild: {
-      title: "Mild & Flavourful Tari (સામાન્ય સ્વાદ)",
-      desc: "Perfect for kids, beginners, or anyone who enjoys rich Gujarati aromas and savory boiled vatana with minimal chili burn. You get the full depth of coriander, cloves, and turmeric without the fiery punch.",
-      badge: "Mild Spice • Family Friendly"
+  const styleData = {
+    classic: {
+      title: "The Classic Original (અસલી તીખો રસો)",
+      desc: "Straight from the boiling cauldron! Unadulterated crimson Tari, tender green vatana, and crunchy Ratlami sev with fresh spring greens. If you love the authentic fiery kick of Gujarati street food, this is the master bowl.",
+      badge: "THE ORIGINAL • AUTHENTIC KICK",
+      btnText: "Order Classic Usal 🌶️",
+      waText: "Hello Jay Mahakali! I want to order Classic Authentic Sev Usal.",
+      icon: "🍲",
+      sub: "BOILING TARI"
     },
-    medium: {
-      title: "Signature Mahakali Medium (મધ્યમ તીખો રસો)",
-      desc: "The quintessential Gujarati street food experience! A tantalizing crimson Tari that gives you an authentic spicy kick, balanced with refreshing spring onions and a squeeze of fresh lemon.",
-      badge: "Signature Recipe • Balanced Kick"
+    butter: {
+      title: "Amul Butter Usal (અમૂલ બટર સેવ ઉસળ)",
+      desc: "A generous slab of golden Amul Butter melts directly into the steaming hot Tari. The richness of the dairy beautifully coats the palate, softening the chili punch into a velvety, luscious gravy that is impossible to resist.",
+      badge: "CHEF'S FAVORITE • VELVETY SMOOTH",
+      btnText: "Order Butter Usal 🧈",
+      waText: "Hello Jay Mahakali! I want to order Butter Sev Usal.",
+      icon: "🧈",
+      sub: "MELTING BUTTER"
     },
-    fire: {
-      title: "Mahakali Teekha Tari (ખાસ તીખો રસો 🔥)",
-      desc: "For true spice champions! Simmered with hot Indian red chilies, freshly cracked black pepper, and our secret masala blend. Guarantees sweating brows, clear sinuses, and pure street food bliss!",
-      badge: "Warning: Extra Spicy • Connoisseur Choice"
+    cheese: {
+      title: "Amul Cheese Usal (અમૂલ ચીઝ સેવ ઉસળ)",
+      desc: "Blanketed with an avalanche of freshly grated Amul cheese. The shredded cheese melts into gooey savory threads that naturally tame the heat, making it the top pick for kids, teenagers, and anyone who prefers a milder, decadent flavor.",
+      badge: "FAMILY HIT • MILD & CHEESY",
+      btnText: "Order Cheese Usal 🧀",
+      waText: "Hello Jay Mahakali! I want to order Cheese Sev Usal.",
+      icon: "🧀",
+      sub: "GRATED CHEESE"
     }
   };
 
@@ -84,10 +99,17 @@ function initSpiceMeter() {
       tab.classList.add('active');
 
       const level = tab.getAttribute('data-level');
-      if (spiceData[level]) {
-        spiceTitle.textContent = spiceData[level].title;
-        spiceDesc.textContent = spiceData[level].desc;
-        if (spiceBadge) spiceBadge.textContent = spiceData[level].badge;
+      const data = styleData[level];
+      if (data) {
+        spiceTitle.textContent = data.title;
+        spiceDesc.textContent = data.desc;
+        if (spiceBadge) spiceBadge.textContent = data.badge;
+        if (spiceBtn) {
+          spiceBtn.textContent = data.btnText;
+          spiceBtn.href = `https://wa.me/919316500189?text=${encodeURIComponent(data.waText)}`;
+        }
+        if (spiceIcon) spiceIcon.textContent = data.icon;
+        if (spiceSub) spiceSub.textContent = data.sub;
       }
     });
   });
