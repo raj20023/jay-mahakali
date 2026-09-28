@@ -108,7 +108,7 @@ const BLOG_POSTS = [
     date: "September 18, 2026",
     readTime: "5 min read",
     author: "Culinary Chronicles",
-    image: "assets/hero_sev_usal.jpg",
+    image: "assets/special_sev_usal_pav.jpg",
     excerpt: "While both dishes feature spicy gravy, legumes, and bread, Sev Usal and Misal Pav have completely distinct souls. Here is how Gujarat's pride stands apart.",
     metaTitle: "Sev Usal vs Misal Pav | Understanding the Key Differences",
     metaDesc: "Compare Gujarati Sev Usal with Maharashtrian Misal Pav. Discover differences in gravy, lentils, spices, and bread in this culinary breakdown.",
