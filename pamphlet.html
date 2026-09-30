@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jay Mahakali Sev Usal - Print-Ready A5 Marketing Pamphlet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Plus+Jakarta+Sans:wght@500;700;800;900&family=Yatra+One&family=Rozha+One&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Page Settings for Exact A5 Dimensions (148mm x 210mm) */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --turmeric-yellow: #FCBF49;
+      --turmeric-deep: #F77F00;
+      --tari-red: #D62828;
+      --tari-dark: #BA181B;
+      --chutney-green: #2D6A4F;
+      --retro-cream: #FFFDF7;
+      --retro-dark: #1A120B;
+      --white: #FFFFFF;
+      --font-display: 'Bungee', cursive, sans-serif;
+      --font-heading: 'Yatra One', 'Rozha One', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: #2b2b2b;
+      font-family: var(--font-body);
+      color: var(--retro-dark);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    /* Screen UI Tools Bar (Hidden in Print) */
+    .screen-control-bar {
+      background: #ffffff;
+      padding: 1rem 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .btn-print {
+      background: var(--tari-red);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.75rem 1.6rem;
+      border: 2px solid var(--retro-dark);
+      border-radius: 8px;
+      box-shadow: 3px 3px 0 var(--retro-dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.15s ease;
+    }
+
+    .btn-print:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--retro-dark);
+    }
+
+    .pamphlet-display-area {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Exact A5 Print Canvas Container */
+    .a5-page {
+      width: 148mm;
+      height: 210mm;
+      background: var(--retro-cream);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 3.5px solid var(--retro-dark);
+    }
+
+    /* Outer vintage double border frame */
+    .page-inner-frame {
+      position: absolute;
+      top: 2.5mm;
+      bottom: 2.5mm;
+      left: 2.5mm;
+      right: 2.5mm;
+      border: 1.5px dashed rgba(26, 18, 11, 0.35);
+      pointer-events: none;
+    }
+
+    /* Header Banner */
+    .top-event-ribbon {
+      background: linear-gradient(90deg, #BA181B 0%, #E63946 50%, #BA181B 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 4px 6px;
+      font-family: var(--font-display);
+      font-size: 10.5pt;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-bottom: 2.5px solid var(--retro-dark);
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    .brand-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 12px 3px;
+      background: #FFF9E6;
+      border-bottom: 2px solid var(--retro-dark);
+    }
+
+    .brand-logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-logo-img {
+      height: 40px;
+      width: auto;
+      filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.2));
+    }
+
+    .brand-text-sub {
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 7pt;
+      letter-spacing: 0.5px;
+      color: var(--tari-dark);
+      text-transform: uppercase;
+    }
+
+    .trust-badges-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+    }
+
+    .mini-badge {
+      display: inline-block;
+      font-size: 6.5pt;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 20px;
+      border: 1.5px solid var(--retro-dark);
+      text-transform: uppercase;
+      box-shadow: 1.5px 1.5px 0 var(--retro-dark);
+    }
+
+    .mini-badge.green {
+      background: #2D6A4F;
+      color: #fff;
+    }
+
+    .mini-badge.yellow {
+      background: var(--turmeric-yellow);
+      color: var(--retro-dark);
+    }
+
+    /* Main Content Body */
+    .pamphlet-body {
+      padding: 6px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex-grow: 1;
+    }
+
+    .headline-wrap {
+      text-align: center;
+    }
+
+    .gujlish-main-title {
+      font-family: var(--font-heading);
+      font-size: 14pt;
+      line-height: 1.2;
+      color: var(--tari-red);
+      text-shadow: 1px 1px 0 var(--turmeric-yellow);
+    }
+
+    .english-sub-title {
+      font-family: var(--font-body);
+      font-size: 7.8pt;
+      font-weight: 700;
+      color: #3D2B1F;
+      letter-spacing: 0.2px;
+      margin-top: 1px;
+    }
+
+    /* Visual Showcase */
+    .hero-photo-container {
+      width: 100%;
+      height: 48mm;
+      border-radius: 8px;
+      border: 2px solid var(--retro-dark);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 3px 3px 0 var(--retro-dark);
+    }
+
+    .hero-photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-overlay-tag {
+      position: absolute;
+      bottom: 5px;
+      left: 6px;
+      background: rgba(26, 18, 11, 0.9);
+      color: var(--turmeric-yellow);
+      padding: 2px 7px;
+      font-size: 6.5pt;
+      font-weight: 800;
+      border-radius: 4px;
+      border: 1px solid var(--turmeric-yellow);
+    }
+
+    /* The Superstar Hook: UNLIMITED RASO */
+    .unlimited-raso-box {
+      background: #FFF1CC;
+      border: 2.2px solid var(--tari-red);
+      border-radius: 8px;
+      padding: 4px 8px;
+      text-align: center;
+      box-shadow: 2.5px 2.5px 0 var(--retro-dark);
+      position: relative;
+    }
+
+    .unlimited-title {
+      font-family: var(--font-display);
+      font-size: 11pt;
+      color: var(--tari-red);
+      letter-spacing: 0.8px;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .unlimited-desc {
+      font-family: var(--font-heading);
+      font-size: 9pt;
+      color: #1A120B;
+      font-weight: 700;
+    }
+
+    /* First Day 10% Off Box */
+    .first-day-offer-pill {
+      background: var(--tari-red);
+      color: #ffffff;
+      border: 2px solid var(--retro-dark);
+      border-radius: 6px;
+      padding: 3px 8px;
+      text-align: center;
+      box-shadow: 2px 2px 0 var(--retro-dark);
+    }
+
+    .first-day-offer-pill .offer-big {
+      font-family: var(--font-display);
+      font-size: 10pt;
+      letter-spacing: 0.5px;
+      color: #FFE600;
+    }
+
+    .first-day-offer-pill .offer-sub {
+      font-size: 6.8pt;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Price Spotlight Grid */
+    .price-spotlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .price-card {
+      background: #FFFFFF;
+      border: 2px solid var(--retro-dark);
+      border-radius: 6px;
+      padding: 4px 6px;
+      text-align: center;
+      box-shadow: 2.5px 2.5px 0 var(--retro-dark);
+    }
+
+    .price-card-title {
+      font-family: var(--font-display);
+      font-size: 8.5pt;
+      color: var(--tari-dark);
+      letter-spacing: 0.4px;
+    }
+
+    .price-card-amount {
+      font-family: var(--font-body);
+      font-size: 15pt;
+      font-weight: 900;
+      color: var(--retro-dark);
+      line-height: 1.1;
+    }
+
+    .price-card-sub {
+      font-size: 6.5pt;
+      font-weight: 700;
+      color: #665;
+    }
+
+    /* Variations Bar */
+    .ways-to-enjoy-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: #FFF7DF;
+      border: 1.5px solid var(--retro-dark);
+      border-radius: 5px;
+      padding: 3px 5px;
+      font-size: 6.8pt;
+      font-weight: 800;
+    }
+
+    /* Bottom Contact & QR Area */
+    .pamphlet-footer {
+      background: #FFF2D1;
+      border-top: 2.5px solid var(--retro-dark);
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .footer-address-col {
+      flex: 1;
+      font-size: 6.8pt;
+      line-height: 1.25;
+      color: #26160C;
+    }
+
+    .footer-store-name {
+      font-family: var(--font-display);
+      font-size: 8pt;
+      color: var(--tari-red);
+      letter-spacing: 0.3px;
+    }
+
+    .footer-qr-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      background: #fff;
+      padding: 4px;
+      border-radius: 6px;
+      border: 1.5px solid var(--retro-dark);
+      box-shadow: 2px 2px 0 var(--retro-dark);
+      text-align: center;
+    }
+
+    .footer-qr-img {
+      width: 48px;
+      height: 48px;
+      display: block;
+    }
+
+    .footer-qr-label {
+      font-size: 5.5pt;
+      font-weight: 800;
+      color: var(--retro-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+
+    /* ==========================================================================
+       SIDE 2: NAVRATRI BULK FOOD ORDERS & PARTY PARCELS
+       ========================================================================== */
+    .navratri-ribbon {
+      background: linear-gradient(90deg, #D90429 0%, #EF233C 50%, #D90429 100%);
+      color: #FFE600;
+      text-align: center;
+      padding: 4px 6px;
+      font-family: var(--font-display);
+      font-size: 10.5pt;
+      letter-spacing: 0.8px;
+      border-bottom: 2.5px solid var(--retro-dark);
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    .side2-body {
+      padding: 6px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 5.5px;
+      flex-grow: 1;
+    }
+
+    .navratri-hero-card {
+      background: #FFEAC1;
+      border: 2px solid var(--retro-dark);
+      border-radius: 8px;
+      padding: 5px 8px;
+      text-align: center;
+      box-shadow: 2.5px 2.5px 0 var(--retro-dark);
+    }
+
+    .navratri-hero-guj {
+      font-family: var(--font-heading);
+      font-size: 12.5pt;
+      color: var(--tari-red);
+      line-height: 1.2;
+    }
+
+    .navratri-hero-eng {
+      font-size: 7.5pt;
+      font-weight: 700;
+      color: #2E1F14;
+      margin-top: 1px;
+    }
+
+    /* 10% Off Bulk Offer */
+    .bulk-offer-box {
+      background: #D90429;
+      color: #FFFFFF;
+      border: 2px solid var(--retro-dark);
+      border-radius: 8px;
+      padding: 5px 8px;
+      text-align: center;
+      box-shadow: 2.5px 2.5px 0 var(--retro-dark);
+    }
+
+    .bulk-offer-title {
+      font-family: var(--font-display);
+      font-size: 11pt;
+      color: #FFE600;
+      letter-spacing: 0.6px;
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    .bulk-offer-condition {
+      font-size: 7pt;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      color: #fff;
+    }
+
+    /* Leak-Proof Packaging Checklist */
+    .packaging-checklist-box {
+      background: #FFFFFF;
+      border: 2px solid var(--retro-dark);
+      border-radius: 8px;
+      padding: 6px 9px;
+      box-shadow: 2.5px 2.5px 0 var(--retro-dark);
+    }
+
+    .checklist-title {
+      font-family: var(--font-display);
+      font-size: 8.5pt;
+      color: var(--tari-dark);
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .checklist-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px 6px;
+      font-size: 6.8pt;
+      font-weight: 700;
+      color: #2A1B12;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Occasion Tags */
+    .occasions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+    }
+
+    .occasion-card {
+      background: #FFF6E0;
+      border: 1.5px solid var(--retro-dark);
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 6.8pt;
+      font-weight: 800;
+      color: #382519;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .occasion-icon {
+      font-size: 11pt;
+    }
+
+    /* Side 2 Footer CTA */
+    .side2-footer {
+      background: #FFF2D1;
+      border-top: 2.5px solid var(--retro-dark);
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .side2-cta-text {
+      flex: 1;
+    }
+
+    .side2-cta-headline {
+      font-family: var(--font-display);
+      font-size: 8.5pt;
+      color: var(--tari-red);
+      letter-spacing: 0.3px;
+    }
+
+    .side2-cta-sub {
+      font-size: 6.8pt;
+      font-weight: 700;
+      color: #26160C;
+      line-height: 1.25;
+      margin-top: 2px;
+    }
+
+    .side2-qr-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      background: #fff;
+      padding: 4px;
+      border-radius: 6px;
+      border: 1.5px solid #25D366;
+      box-shadow: 2px 2px 0 var(--retro-dark);
+      text-align: center;
+    }
+
+    .side2-qr-img {
+      width: 48px;
+      height: 48px;
+      display: block;
+    }
+
+    .side2-qr-label {
+      font-size: 5.5pt;
+      font-weight: 900;
+      color: #128C7E;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+
+    /* Print Directives: Exact A5 Paper Output */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+        gap: 0;
+      }
+
+      .screen-control-bar {
+        display: none !important;
+      }
+
+      .pamphlet-display-area {
+        gap: 0;
+        display: block;
+      }
+
+      .a5-page {
+        width: 148mm;
+        height: 210mm;
+        page-break-after: always;
+        box-shadow: none;
+        border: 2px solid #000;
+        margin: 0 auto;
+      }
+
+      @page {
+        size: A5 portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Control Bar (Only visible in browser, automatically hidden when printing) -->
+  <div class="screen-control-bar">
+    <div>
+      <h2 style="font-size: 1.1rem; color: #1A120B; font-weight: 800;">Official Jay Mahakali Sev Usal — A5 Two-Sided Marketing Pamphlet</h2>
+      <p style="font-size: 0.85rem; color: #555;">Exact dimensions: 148 mm × 210 mm (A5 Portrait). Ready to inspect and export to PDF.</p>
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      🖨️ Print / Save as PDF (A5)
+    </button>
+  </div>
+
+  <div class="pamphlet-display-area">
+
+    <!-- ==========================================================================
+         SIDE 1: FRONT SIDE (GRAND OPENING & FOOTFALL MAGNET)
+         ========================================================================== -->
+    <div class="a5-page" id="side1">
+      <div class="page-inner-frame"></div>
+
+      <!-- Top Grand Opening Ribbon -->
+      <div class="top-event-ribbon">
+        🎉 GRAND OPENING: 11TH OCTOBER, FRIDAY 🎉
+      </div>
+
+      <!-- Brand Bar -->
+      <div class="brand-header-row">
+        <div class="brand-logo-area">
+          <img src="assets/logo.png" alt="Jay Mahakali Logo" class="brand-logo-img">
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 11pt; color: var(--tari-red); line-height: 1;">Jay Mahakali</div>
+            <div class="brand-text-sub">Science City, Sola</div>
+          </div>
+        </div>
+        <div class="trust-badges-row">
+          <span class="mini-badge green">🌿 100% PURE VEG</span>
+          <span class="mini-badge yellow">🧈 AMUL BUTTER & CHEESE</span>
+        </div>
+      </div>
+
+      <!-- Main Body -->
+      <div class="pamphlet-body">
+
+        <!-- Gujlish Headline -->
+        <div class="headline-wrap">
+          <h1 class="gujlish-main-title">હવે સાયન્સ સિટીમાં ઉકળશે અસલી સ્વાદિષ્ટ તારી!</h1>
+          <p class="english-sub-title">The Legendary Authentic Taste of Sev Usal is Finally in Sola, Ahmedabad!</p>
+        </div>
+
+        <!-- Hero Photo -->
+        <div class="hero-photo-container">
+          <img src="assets/hero_sev_usal.jpg" alt="Steaming Jay Mahakali Sev Usal with Round Bakery Buns">
+          <span class="photo-overlay-tag">🔥 Fresh & Boiling Hot Every Day</span>
+        </div>
+
+        <!-- The Game-Changing Hook: UNLIMITED RASO -->
+        <div class="unlimited-raso-box">
+          <div class="unlimited-title">
+            <span>🔥</span> UNLIMITED RASO / TARI! <span>🔥</span>
+          </div>
+          <div class="unlimited-desc">
+            ગરમા-ગરમ અનલિમિટેડ રસો! જેટલો જોઈએ એટલો સ્વાદિષ્ટ રસો માણો!
+          </div>
+        </div>
+
+        <!-- First Day Offer Pill -->
+        <div class="first-day-offer-pill">
+          <div class="offer-big">🎁 FIRST DAY OFFER: FLAT 10% OFF! 🎁</div>
+          <div class="offer-sub">Exclusively on 11th Oct Grand Opening Day (Dine-in & Takeaway)</div>
+        </div>
+
+        <!-- Price Spotlight (Clean & Clear, No Negative Buzzwords) -->
+        <div class="price-spotlight-grid">
+          <div class="price-card">
+            <div class="price-card-title">BASIC SEV USAL</div>
+            <div class="price-card-amount">₹70/-</div>
+            <div class="price-card-sub">Authentic Tari • Tender Vatana • Crisp Sev</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-title">SPECIAL SEV TARI</div>
+            <div class="price-card-amount">₹110/-</div>
+            <div class="price-card-sub">Double Flavor • Extra Rich Tari Bowl</div>
+          </div>
+        </div>
+
+        <!-- Customization Strip -->
+        <div class="ways-to-enjoy-bar">
+          <span>🌶️ Classic Authentic</span>
+          <span>🧈 Amul Butter</span>
+          <span>🧀 Amul Cheese</span>
+          <span>🥛 Masala Chhas</span>
+        </div>
+
+      </div>
+
+      <!-- Footer Contact & Location QR -->
+      <div class="pamphlet-footer">
+        <div class="footer-address-col">
+          <div class="footer-store-name">📍 JAY MAHAKALI SEV USAL</div>
+          <p><strong>Shop No. 9, Ground Floor, Supan Serenity,</strong><br>
+          Science City Rd, near Kargil Petrol Pump, Sola, Ahmedabad.<br>
+          ⏰ <strong>Open Daily: 9:00 AM – 10:00 PM</strong> | 📞 <strong>9316500189</strong><br>
+          🌐 <strong>jaymahakalisciencecity.com</strong></p>
+        </div>
+        <div class="footer-qr-col">
+          <!-- Google Maps QR Code -->
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fmaps.google.com%2F%3Fq%3D23.0764027%2C72.5201583" alt="Google Maps Location QR" class="footer-qr-img">
+          <span class="footer-qr-label">📍 Scan For Location</span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================================================
+         SIDE 2: BACK SIDE (NAVRATRI SPECIAL BULK FOOD ORDERS)
+         ========================================================================== -->
+    <div class="a5-page" id="side2">
+      <div class="page-inner-frame"></div>
+
+      <!-- Top Navratri Ribbon -->
+      <div class="navratri-ribbon">
+        🌸 નવરાત્રી સ્પેશિયલ BULK FOOD ORDERS & PARTY PARCELS 🌸
+      </div>
+
+      <!-- Brand Bar -->
+      <div class="brand-header-row">
+        <div class="brand-logo-area">
+          <img src="assets/logo.png" alt="Jay Mahakali Logo" class="brand-logo-img">
+          <div>
+            <div style="font-family: var(--font-heading); font-size: 11pt; color: var(--tari-red); line-height: 1;">Jay Mahakali</div>
+            <div class="brand-text-sub">Science City, Sola</div>
+          </div>
+        </div>
+        <div class="trust-badges-row">
+          <span class="mini-badge green">🌿 100% PURE VEG</span>
+          <span class="mini-badge yellow">📦 LEAK-PROOF PARCELS</span>
+        </div>
+      </div>
+
+      <!-- Main Body -->
+      <div class="side2-body">
+
+        <!-- Gujlish Emotional Hook -->
+        <div class="navratri-hero-card">
+          <div class="navratri-hero-guj">
+            ગરબા રમ્યા પછી કકડીને ભૂખ લાગી છે?<br>
+            સોસાયટી કે ગ્રૂપ માટે ટેસ્ટી ફૂડ પ્લાન કરવું છે?
+          </div>
+          <div class="navratri-hero-eng">
+            "Don't worry about cooking for 10 to 100+ people! Serve piping hot, authentic Sev Usal!"
+          </div>
+        </div>
+
+        <!-- 10% Off Bulk Offer (Above 2000) -->
+        <div class="bulk-offer-box">
+          <div class="bulk-offer-title">🎊 NAVRATRI BULK OFFER: FLAT 10% OFF! 🎊</div>
+          <div class="bulk-offer-condition">On All Bulk Orders Above ₹2,000/- (Pre-Book Your Society Feast!)</div>
+        </div>
+
+        <!-- Visual Hero: Catering Spread -->
+        <div class="hero-photo-container" style="height: 38mm;">
+          <img src="assets/catering_spread.jpg" alt="Bulk Food Order Packaging Spread">
+          <span class="photo-overlay-tag">🎉 Hassle-Free Ready to Serve Boxes</span>
+        </div>
+
+        <!-- 100% Mess-Free & Leak-Proof Packaging -->
+        <div class="packaging-checklist-box">
+          <div class="checklist-title">✨ 100% Mess-Free & Leak-Proof Packaging:</div>
+          <div class="checklist-items">
+            <div class="checklist-item">🍲 <span>Piping Hot Tari in Leak-Proof Thermos</span></div>
+            <div class="checklist-item">🥣 <span>Tender Slow-Cooked Vatana</span></div>
+            <div class="checklist-item">🍞 <span>Fresh Soft Round Bakery Buns</span></div>
+            <div class="checklist-item">🌿 <span>Crisp Ratlami Sev in Sealed Bags</span></div>
+            <div class="checklist-item">🧅 <span>Fresh Onions & Lemon Garnish Kit</span></div>
+            <div class="checklist-item">🥄 <span>Eco-Friendly Bowls & Spoons Included</span></div>
+          </div>
+        </div>
+
+        <!-- Occasions Grid -->
+        <div class="occasions-grid">
+          <div class="occasion-card">
+            <span class="occasion-icon">💃</span>
+            <span><strong>Society Garba Feasts</strong><br>સોસાયટી ગરબા ઈવેન્ટ</span>
+          </div>
+          <div class="occasion-card">
+            <span class="occasion-icon">🏢</span>
+            <span><strong>Office Navratri Lunch</strong><br>Corporate Team Treats</span>
+          </div>
+          <div class="occasion-card">
+            <span class="occasion-icon">🎉</span>
+            <span><strong>Midnight Garba Squad</strong><br>Post-Garba Friends Cravings</span>
+          </div>
+          <div class="occasion-card">
+            <span class="occasion-icon">🪔</span>
+            <span><strong>Family Get-Togethers</strong><br>Mataji Ni Chowki & Brunches</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer CTA with WhatsApp QR (No mention of pickup from our side) -->
+      <div class="side2-footer">
+        <div class="side2-cta-text">
+          <div class="side2-cta-headline">📲 PRE-BOOK YOUR NAVRATRI BULK ORDER</div>
+          <div class="side2-cta-sub">
+            Planning food for 10, 25, 50, or 100+ guests?<br>
+            <strong>For more information, custom pricing & orders, message us on WhatsApp!</strong><br>
+            📞 <strong>Call / WhatsApp: 9316500189</strong> | 🌐 <strong>jaymahakalisciencecity.com</strong>
+          </div>
+        </div>
+        <div class="side2-qr-col">
+          <!-- WhatsApp QR Code with Pre-filled message -->
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwa.me%2F919316500189%3Ftext%3DHello%20Jay%20Mahakali%20Science%20City!%20I%20want%20to%20inquire%20about%20Navratri%20Bulk%20Food%20Orders." alt="WhatsApp Bulk Order QR" class="side2-qr-img">
+          <span class="side2-qr-label">💬 Scan For WhatsApp</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
